@@ -20,14 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module light_controller(
+module light_controller #(parameter N = 10) (
     input wire clk,
     input wire rst,
     input wire button,
     output reg[2:0] light_state // 3'd0 corresponds to light turned off,
                                 // while 3'd1 to 3'd7 correspond to different colors
     );
-    parameter int N = 10; // fixed 32-bit
     reg previous_button = button;
     reg[31:0] counter = 0;
     always_ff @(posedge clk) begin // only updates output when clk(low=>high)
