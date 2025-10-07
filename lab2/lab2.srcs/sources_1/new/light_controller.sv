@@ -39,7 +39,7 @@ module light_controller #(parameter N = 10) (
                            // light state should be set to 1
         end else begin // button == 1 && previous_button == 1
             if (counter == N) begin
-                counter = 0;
+                counter = 1;
                 if (light_state == 3'b111) begin
                     light_state = 3'b001;
                 end else begin

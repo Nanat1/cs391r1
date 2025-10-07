@@ -24,7 +24,7 @@ module light_controller_tb();
     reg clk;
     reg rst;
     reg button;
-    reg light_state;
+    reg[2:0] light_state;
     
     initial begin
         clk <= 1'b0; button <= 1'b0; #10;
@@ -45,6 +45,6 @@ module light_controller_tb();
         end
         $stop();
     end
-    light_countroller #(1) dut (.clk, .rst, .button, .light_state);
+    light_controller #(3E8) dut (.clk, .rst, .button, .light_state); // 3 sc * 100M Hz
 endmodule
 
