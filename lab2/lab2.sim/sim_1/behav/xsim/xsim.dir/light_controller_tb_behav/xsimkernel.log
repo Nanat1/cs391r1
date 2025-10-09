@@ -2,3 +2,6 @@ Running: xsim.dir/light_controller_tb_behav/xsimk -simmode gui -wdb light_contro
 Design successfully loaded
 Design Loading Memory Usage: 176392 KB (Peak: 176448 KB)
 Design Loading CPU Usage: 1310 ms
+Simulation completed
+Simulation Memory Usage: 258388 KB (Peak: 315660 KB)
+Simulation CPU Usage: 1450 ms

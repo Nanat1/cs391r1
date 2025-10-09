@@ -41,15 +41,15 @@ module register_file_tb();
         end
         clk <= 1'b0; we <= 1'b1; #10;
         clk <= 1'b1; #5;
-        clk <= 1'b0; rd_sel <=4'd4; d_in <= 32'd16; #5;
+        clk <= 1'b0; rd_sel <= 4'd4; d_in <= 32'd16; #5;
         clk <= 1'b1; #5;
         for(int i = 0; i < 8; i++) begin
             clk <= 1'b0; rs_sel <= i; rt_sel <= i + 8; #5;
             clk <= 1'b1; #5;
         end
-        clk <= 1'b0; we <= 1'b1; #10;
+        clk <= 1'b0; we <= 1'b1; #5;
         clk <= 1'b1; #5;
-        clk <= 1'b0; rd_sel <=4'd1; d_in <= 32'd16; #5;
+        clk <= 1'b0; rd_sel <= 4'd1; d_in <= 32'd16; #5;
         clk <= 1'b1; #5;
         for(int i = 0; i < 8; i++) begin
             clk <= 1'b0; rs_sel <= i; rt_sel <= i + 8; #5;

@@ -1,2 +1,2 @@
 Time resolution is 1 ps
-$stop called at time : 315 ns : File "/home/lzhx/Developer/Repositories/cs391r1/lab2/lab2.srcs/sim_1/new/register_file_tb.sv" Line 58
+$stop called at time : 290 ns : File "/home/lzhx/Developer/Repositories/cs391r1/lab2/lab2.srcs/sim_1/new/control_unit_tb.sv" Line 56
