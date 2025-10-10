@@ -27,7 +27,7 @@ module light_controller #(parameter N = 10) (
     output reg[2:0] light_state // 3'd0 corresponds to light turned off,
                                 // while 3'd1 to 3'd7 correspond to different colors
 );
-    reg previous_button = button;
+    reg previous_button;
     reg[31:0] counter = 0;
     always_ff @(posedge clk) begin // only updates output when clk(low=>high)
         if (button == 0) begin
@@ -49,7 +49,7 @@ module light_controller #(parameter N = 10) (
                 counter = counter + 1;
             end
         end
-        previous_button = button;
+        previous_button = button; //update revious_button
     end
 endmodule
 
