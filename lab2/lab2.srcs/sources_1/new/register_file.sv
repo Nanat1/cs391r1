@@ -35,10 +35,15 @@ module register_file #(
     reg [WIDTH-1:0] regs [0:15];
     assign rs = regs[rs_sel[3:0]]; // [0:3] will result in 
     assign rt = regs[rt_sel[3:0]]; // part-select direction is opposite from prefix index direction
+    // assign x0
+    assign regs[0] = 0;
     
     always @(posedge clk) begin
         if (we) begin
-            regs[rd_sel[3:0]] <= d_in;
+            // forbid write to x0
+            if (rd_sel[3:0] != 0) begin
+                regs[rd_sel[3:0]] <= d_in;
+            end
         end
     end
 endmodule
