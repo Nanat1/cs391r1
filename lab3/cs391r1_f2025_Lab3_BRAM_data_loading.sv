@@ -33,46 +33,27 @@ always #5ns begin
     clk = ~clk;
 end
 
-always @ (posedge clk) begin
-    _rst <= rst;
-    _awvalid <= awvalid;
-    _awaddr <= awaddr;
-    _wvalid <= wvalid;
-    _wdata <= wdata;
-    _bready <= bready;
-    _arvalid <= arvalid;
-    _araddr <= araddr;
-    _rready <= rready;
-end
+reg error;
+reg valid;
 
-axi_bram_ctrl_0 my_bram(
-    .s_axi_aclk(clk),
-    .s_axi_aresetn(~rst),
-    .s_axi_araddr(_araddr),
-    .s_axi_arprot(0),
-    .s_axi_arready(arready),
-    .s_axi_arvalid(_arvalid),
-    .s_axi_awaddr(_awaddr),
-    .s_axi_awprot(0),
-    .s_axi_awready(awready),
-    .s_axi_awvalid(_awvalid),
-    .s_axi_bready(_bready),
-    .s_axi_bresp(bresp),
-    .s_axi_bvalid(bvalid),
-    .s_axi_rdata(rdata),
-    .s_axi_rready(_rready),
-    .s_axi_rvalid(rvalid),
-    .s_axi_wdata(_wdata),
-    .s_axi_wready(wready),
-    .s_axi_wstrb('b1111),
-    .s_axi_wvalid(_wvalid) 
+BRAM_control_unit ctrl_unit (
+    .clk(clk), 
+    .rst(rst), 
+    .valid(valid),
+    .error(error)
 );
 
+
 reg [7:0] my_memory[511:0];
+reg [31:0] regs[0:31];
+
+assign regs = ctrl_unit.reg_file.regs;
+
+
 
 initial begin
 
-    rst = 1;
+    rst = 1; valid = 0;
     #20ns;
     rst = 0;
     #20ns;
@@ -82,22 +63,25 @@ initial begin
     #40ns;
 
     for (int i = 0; i < 512; i+=4) begin
-        awvalid = 1;
-        wvalid = 1;
-        awaddr = i;
-        wdata = {my_memory[i], my_memory[i+1], my_memory[i+2], my_memory[i+3]}; // be careful with endianness...
+        ctrl_unit.awvalid = 1;
+        ctrl_unit.wvalid = 1;
+        ctrl_unit.awaddr = i;
+        ctrl_unit.wdata = {my_memory[i], my_memory[i+1], my_memory[i+2], my_memory[i+3]}; // be careful with endianness...
         #20ns;
-        awvalid = 0;
-        wvalid = 0;
-        bready = 1;
+        ctrl_unit.awvalid = 0;
+        ctrl_unit.wvalid = 0;
+        ctrl_unit.bready = 1;
         #20ns;
-        bready = 0;
+        ctrl_unit.bready = 0;
         #20ns;
     end
 
     #20ns;
 
     // actual test-bench starts here...
+    
+    valid = 1;
+    #600ns;
 
     $finish;
 end
