@@ -12,13 +12,13 @@ module control_unit(
 reg[31:0] curr_instruction;
 reg[3:0] state; // 0 means ready, 1 means sending to ALU, 2 means writing to register
 
-assign ready = state == 0;
+assign ready = (state == 0);
 
 reg we;
 reg[31:0] d_in;
-reg[3:0] rd_sel;
-reg[3:0] rs_sel;
-reg[3:0] rt_sel;
+reg[4:0] rd_sel;
+reg[4:0] rs_sel;
+reg[4:0] rt_sel;
 wire[31:0] rs;
 wire[31:0] rt;
 register_file reg_file(
@@ -64,11 +64,7 @@ always @(posedge clk) begin
         error <= 0;
     end else if (state == 1) begin // when sending to ALU
         
-        if (curr_instruction == 7'b0110111) begin // if lui
-            alu_op1 <= curr_instruction[31:12];
-            alu_op2 <= 32'd12;
-            alu_control <= 4'b0101;
-        end else if (curr_instruction[6:0] == 7'b0010011) begin // if type I
+        if (curr_instruction[6:0] == 7'b0010011) begin // if type I
             alu_op1 <= rs;
             if (curr_instruction[31:25] == 7'h00) begin
                 alu_op2 <= curr_instruction[31:20];
@@ -89,13 +85,18 @@ always @(posedge clk) begin
         
         state <= 2; // shift to writing to register
     end else if (state == 2) begin // when writing to register
+        
         if (alu_error) begin // error handing
             error <= 1;
             
             state <= 0;
         end else begin
             we <= 1;
-            d_in <= alu_res;
+            if (curr_instruction[6:0] == 7'b0110111) begin // if lui
+                d_in <= {curr_instruction[31:12], 12'b0};
+            end else begin
+                d_in <= alu_res;
+            end
             rd_sel <= curr_instruction[11:7];
             
             state <= 3; // shift to cycle finish
