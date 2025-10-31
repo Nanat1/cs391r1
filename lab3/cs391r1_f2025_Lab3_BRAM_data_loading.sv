@@ -3,21 +3,15 @@ module test_simulation();
 bit clk;
 bit rst;
 
-wire awready;
+
 bit awvalid;
 bit[19:0] awaddr;
-wire wready;
 bit wvalid;
 bit[31:0] wdata;
 bit bready;
-wire bvalid;
-wire[1:0] bresp;
-wire arready;
 bit arvalid;
 bit[19:0] araddr;
 bit rready;
-wire rvalid;
-wire[31:0] rdata;
 
 reg _rst;
 reg _awvalid;
@@ -40,6 +34,11 @@ BRAM_control_unit ctrl_unit (
     .clk(clk), 
     .rst(rst), 
     .valid(valid),
+    .awvalid(awvalid),
+    .wvalid(wvalid),
+    .awaddr(awaddr),
+    .wdata(wdata),
+    .bready(bready),
     .error(error)
 );
 
@@ -63,16 +62,16 @@ initial begin
     #40ns;
 
     for (int i = 0; i < 512; i+=4) begin
-        ctrl_unit.awvalid = 1;
-        ctrl_unit.wvalid = 1;
-        ctrl_unit.awaddr = i;
-        ctrl_unit.wdata = {my_memory[i], my_memory[i+1], my_memory[i+2], my_memory[i+3]}; // be careful with endianness...
+        awvalid = 1;
+        wvalid = 1;
+        awaddr = i;
+        wdata = {my_memory[i], my_memory[i+1], my_memory[i+2], my_memory[i+3]}; // be careful with endianness...
         #20ns;
-        ctrl_unit.awvalid = 0;
-        ctrl_unit.wvalid = 0;
-        ctrl_unit.bready = 1;
+        awvalid = 0;
+        wvalid = 0;
+        bready = 1;
         #20ns;
-        ctrl_unit.bready = 0;
+        bready = 0;
         #20ns;
     end
 

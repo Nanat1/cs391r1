@@ -24,6 +24,11 @@ module BRAM_control_unit(
     input  wire clk,
     input  wire rst,
     input  wire valid,
+    input wire awvalid,
+    input wire wvalid,
+    input wire[19:0] awaddr,
+    input wire[31:0] wdata,
+    input wire bready,
     output reg error
 );
 
@@ -64,12 +69,7 @@ alu alu(
 );
 
 wire awready;
-bit awvalid;
-bit[19:0] awaddr;
 wire wready;
-bit wvalid;
-bit[31:0] wdata;
-bit bready;
 wire bvalid;
 wire[1:0] bresp;
 wire arready;
