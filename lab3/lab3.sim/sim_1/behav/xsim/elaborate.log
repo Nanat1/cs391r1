@@ -7,9 +7,7 @@ WARNING: [XSIM 43-3431] One or more environment variables have been detected whi
 Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-9380] size mismatch in mixed-language port association of VHDL port 's_axi_arprot' [/home/lzhx/Developer/Repositories/cs391r1/lab3/cs391r1_f2025_Lab3_BRAM_data_loading.sv:48]
-WARNING: [VRFC 10-9380] size mismatch in mixed-language port association of VHDL port 's_axi_arprot' [/home/lzhx/Developer/Repositories/cs391r1/lab3/lab3.srcs/sources_1/new/BRAM_control_unit.sv:105]
 WARNING: [VRFC 10-5021] port 's_axi_rresp' is not connected on this instance [/home/lzhx/Developer/Repositories/cs391r1/lab3/cs391r1_f2025_Lab3_BRAM_data_loading.sv:48]
-WARNING: [VRFC 10-5021] port 's_axi_rresp' is not connected on this instance [/home/lzhx/Developer/Repositories/cs391r1/lab3/lab3.srcs/sources_1/new/BRAM_control_unit.sv:105]
 Completed static elaboration
 Starting simulation data flow analysis
 Completed simulation data flow analysis

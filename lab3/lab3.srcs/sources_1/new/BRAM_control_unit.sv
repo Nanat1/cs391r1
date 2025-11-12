@@ -21,10 +21,16 @@
 
 
 module BRAM_control_unit(
-    input  wire clk,
-    input  wire rst,
-    input  wire valid,
-    output reg error
+    input wire clk,
+    input wire rst,
+    input wire valid,
+    output reg error,
+    
+    input wire rvalid,
+    input wire[31:0] rdata,
+    output wire arvalid,
+    output wire rready,
+    output wire[19:0] araddr
 );
 
 reg[31:0] curr_instruction;
@@ -63,67 +69,14 @@ alu alu(
     .error(alu_error)
 );
 
-wire awready;
-wire wready;
-wire bvalid;
-wire[1:0] bresp;
-wire arready;
-bit arvalid;
-bit[19:0] araddr;
-bit rready;
-wire rvalid;
-wire[31:0] rdata;
-wire awvalid;
-wire wvalid;
-wire[19:0] awaddr;
-wire[31:0] wdata;
-wire bready;
-
-reg _rst;
-reg _awvalid;
-reg[19:0] _awaddr;
-reg _wvalid;
-reg[31:0] _wdata;
-reg _bready;
 reg _arvalid;
 reg[19:0] _araddr;
 reg _rready;
 
+assign arvalid = _arvalid;
+assign araddr = _araddr;
+assign rready = _rready;
 
-always @ (posedge clk) begin
-    _rst <= rst;
-    _awvalid <= awvalid;
-    _awaddr <= awaddr;
-    _wvalid <= wvalid;
-    _wdata <= wdata;
-    _bready <= bready;
-    _arvalid <= arvalid;
-    _araddr <= araddr;
-    _rready <= rready;
-end
-
-axi_bram_ctrl_0 my_bram(
-    .s_axi_aclk(clk),
-    .s_axi_aresetn(~rst),
-    .s_axi_araddr(_araddr),
-    .s_axi_arprot(0),
-    .s_axi_arready(arready),
-    .s_axi_arvalid(_arvalid),
-    .s_axi_awaddr(_awaddr),
-    .s_axi_awprot(0),
-    .s_axi_awready(awready),
-    .s_axi_awvalid(_awvalid),
-    .s_axi_bready(_bready),
-    .s_axi_bresp(bresp),
-    .s_axi_bvalid(bvalid),
-    .s_axi_rdata(rdata),
-    .s_axi_rready(_rready),
-    .s_axi_rvalid(rvalid),
-    .s_axi_wdata(_wdata),
-    .s_axi_wready(wready),
-    .s_axi_wstrb('b1111),
-    .s_axi_wvalid(_wvalid)
-);
 
 always @(posedge clk) begin
     if (rst) begin
@@ -135,12 +88,14 @@ always @(posedge clk) begin
         // when ready and instruction is valid
         _arvalid <= 1;
         _rready <= 1;
-        araddr <= PC;
+        _araddr <= PC;
         // if arready, this will be recieved
         
         state <= 1; // shift to fetching
         error <= 0;
     end else if (state == 1 && rvalid) begin
+        _arvalid <= 0;
+        _rready <= 0;
             
         curr_instruction <= rdata;
         
@@ -159,12 +114,17 @@ always @(posedge clk) begin
         
         if (curr_instruction[6:0] == 7'b0010011) begin // if type I
             alu_op1 <= rs;
-            if (curr_instruction[31:25] == 7'h00) begin
+            if (curr_instruction[14:12] == 3'h5 || curr_instruction[14:12] == 3'h1) begin
+                if (curr_instruction[31:25] == 7'h00) begin
+                    alu_op2 <= curr_instruction[31:20];
+                    alu_control <= {1'b0, curr_instruction[14:12]};
+                end else if (curr_instruction[31:25] == 7'h20) begin
+                    alu_op2 <= curr_instruction[24:20];
+                    alu_control <= {1'b1, curr_instruction[14:12]};
+                end
+            end else begin
                 alu_op2 <= curr_instruction[31:20];
                 alu_control <= {1'b0, curr_instruction[14:12]};
-            end else if (curr_instruction[31:25] == 7'h20) begin
-                alu_op2 <= curr_instruction[24:20];
-                alu_control <= {1'b1, curr_instruction[14:12]};
             end
         end else if (curr_instruction[6:0] == 7'b0110011) begin // if type R
             alu_op1 <= rs;
@@ -185,12 +145,12 @@ always @(posedge clk) begin
             state <= 0;
         end else begin
             we <= 1;
+            rd_sel <= curr_instruction[11:7];
             if (curr_instruction[6:0] == 7'b0110111) begin // if lui
                 d_in <= {curr_instruction[31:12], 12'b0};
             end else begin
                 d_in <= alu_res;
             end
-            rd_sel <= curr_instruction[11:7];
             
             state <= 4; // shift to cycle finish
         end
@@ -198,6 +158,8 @@ always @(posedge clk) begin
         we <= 0;
         state <= 0;
         PC <= PC + 4;
+        _arvalid <= 1;
+        _araddr <= PC;
     end
 end
 

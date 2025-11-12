@@ -75,15 +75,26 @@ BRAM_control_unit ctrl_unit (
     .clk(clk), 
     .rst(rst), 
     .valid(valid),
-    .error(error)
+    .error(error),
+  
+    .rvalid(rvalid),
+    .rdata(rdata),
+    .arvalid(arvalid),
+    .rready(rready),
+    .araddr(araddr)
 );
 
 
 reg [7:0] my_memory[511:0];
 reg [31:0] regs[0:31];
+reg [3:0] state_of_cu;
+reg [31:0] alu_op1;
+reg [31:0] alu_op2;
 
 assign regs = ctrl_unit.reg_file.regs;
-
+assign state_of_cu = ctrl_unit.state;
+assign alu_op1 = ctrl_unit.alu_op1;
+assign alu_op2 = ctrl_unit.alu_op2;
 
 
 initial begin
@@ -93,7 +104,7 @@ initial begin
     rst = 0;
     #20ns;
 
-    $readmemh("/.../lab3_binary.hex", my_memory);
+    $readmemh("/home/lzhx/Developer/Repositories/cs391r1/lab3/lab3_binary.hex", my_memory);
 
     #40ns;
 
@@ -101,7 +112,7 @@ initial begin
         awvalid = 1;
         wvalid = 1;
         awaddr = i;
-        wdata = {my_memory[i], my_memory[i+1], my_memory[i+2], my_memory[i+3]}; // be careful with endianness...
+        wdata = {my_memory[i+3], my_memory[i+2], my_memory[i+1], my_memory[i]}; // be careful with endianness...
         #20ns;
         awvalid = 0;
         wvalid = 0;
@@ -116,7 +127,7 @@ initial begin
     // actual test-bench starts here...
     
     valid = 1;
-    #600ns;
+    #10000ns;
 
     $finish;
 end
