@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Wed May 21 22:58:25 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Wed Nov 12 23:47:11 2025
+# Process ID         : 89874
+# Current directory  : /home/lzhx/Developer/Repositories/cs391r1/lab4/lab4.runs/axi_bram_ctrl_0_synth_1
+# Command line       : vivado -log axi_bram_ctrl_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source axi_bram_ctrl_0.tcl
+# Log file           : /home/lzhx/Developer/Repositories/cs391r1/lab4/lab4.runs/axi_bram_ctrl_0_synth_1/axi_bram_ctrl_0.vds
+# Journal file       : /home/lzhx/Developer/Repositories/cs391r1/lab4/lab4.runs/axi_bram_ctrl_0_synth_1/vivado.jou
+# Running On         : Tin-Workspace
+# Platform           : Ubuntu
+# Operating System   : Ubuntu 24.04.2 LTS
+# Processor Detail   : Intel(R) Core(TM) Ultra 9 185H
+# CPU Frequency      : 3071.999 MHz
+# CPU Physical cores : 11
+# CPU Logical cores  : 22
+# Host memory        : 16501 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 20796 MB
+# Available Virtual  : 18827 MB
+#-----------------------------------------------------------
+source axi_bram_ctrl_0.tcl -notrace
