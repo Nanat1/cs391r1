@@ -1,7 +1,4 @@
 Time resolution is 1 ps
 Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. test_simulation.my_bram.U0.gint_inst.xpm_spram_mem_gen.xpm_memory_spram_inst.xpm_memory_base_inst.config_drc  0
 Time: 1 ps  Iteration: 0  Process: /test_simulation/my_bram/U0/gint_inst/xpm_spram_mem_gen/xpm_memory_spram_inst/xpm_memory_base_inst/Initial310_2  Scope: test_simulation.my_bram.U0.gint_inst.xpm_spram_mem_gen.xpm_memory_spram_inst.xpm_memory_base_inst.config_drc  File: /opt/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 524
-$stop called at time : 10475 ns : File "/home/lzhx/Developer/Repositories/cs391r1/lab4/lab4.srcs/sources_1/new/control_unit.sv" Line 130
-Info: [XPM_MEMORY 20-2] MEMORY_INIT_FILE (none), MEMORY_INIT_PARAM together specify no memory initialization. Initial memory contents will be all 0's. test_simulation.my_bram.U0.gint_inst.xpm_spram_mem_gen.xpm_memory_spram_inst.xpm_memory_base_inst.config_drc  0
-Time: 1 ps  Iteration: 0  Process: /test_simulation/my_bram/U0/gint_inst/xpm_spram_mem_gen/xpm_memory_spram_inst/xpm_memory_base_inst/Initial310_2  Scope: test_simulation.my_bram.U0.gint_inst.xpm_spram_mem_gen.xpm_memory_spram_inst.xpm_memory_base_inst.config_drc  File: /opt/Xilinx/2025.1/Vivado/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv Line: 524
-$stop called at time : 10475 ns : File "/home/lzhx/Developer/Repositories/cs391r1/lab4/lab4.srcs/sources_1/new/control_unit.sv" Line 130
+$stop called at time : 15105 ns : File "/home/lzhx/Developer/Repositories/cs391r1/lab4/lab4.srcs/sources_1/new/control_unit.sv" Line 145

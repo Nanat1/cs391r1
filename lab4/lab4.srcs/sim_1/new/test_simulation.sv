@@ -59,6 +59,9 @@ reg[19:0] cu_awaddr;
 reg cu_wvalid;
 reg[31:0] cu_wdata;
 reg cu_bready;
+reg cu_arvalid;
+reg[19:0] cu_araddr;
+reg cu_rready;
 
 always #5ns begin
     clk = ~clk;
@@ -66,20 +69,24 @@ end
 
 always @ (posedge clk) begin
     _rst <= rst;
-    _awvalid <= awvalid;
-    _awaddr <= awaddr;
-    _wvalid <= wvalid;
-    _wdata <= wdata;
-    _bready <= bready;
-    _arvalid <= arvalid;
-    _araddr <= araddr;
-    _rready <= rready;
     if (valid) begin
         _awvalid <= cu_awvalid;
         _wvalid <= cu_wvalid;
         _awaddr <= cu_awaddr;
         _wdata <= cu_wdata;
         _bready <= cu_bready;
+        _arvalid <= cu_arvalid;
+        _araddr <= cu_araddr;
+        _rready <= cu_rready;
+    end else begin
+        _awvalid <= awvalid;
+        _awaddr <= awaddr;
+        _wvalid <= wvalid;
+        _wdata <= wdata;
+        _bready <= bready;
+        _arvalid <= arvalid;
+        _araddr <= araddr;
+        _rready <= rready;
     end
 end
 
@@ -115,15 +122,19 @@ control_unit ctrl_unit (
   
     .rvalid(rvalid),
     .rdata(rdata),
-    .arvalid(arvalid),
-    .rready(rready),
-    .araddr(araddr),
+    .arvalid(cu_arvalid),
+    .rready(cu_rready),
+    .araddr(cu_araddr),
     
+    .arready(arready),
+    .awready(awready),
     .awvalid(cu_awvalid),
     .wvalid(cu_wvalid),
     .awaddr(cu_awaddr),
     .wdata(cu_wdata),
-    .bready(cu_bready)
+    .wready(wready),
+    .bready(cu_bready),
+    .bvalid(bvalid)
 );
 
 
@@ -132,12 +143,15 @@ reg [31:0] regs[0:31];
 reg [3:0] state_of_cu;
 reg [31:0] alu_op1;
 reg [31:0] alu_op2;
+reg [31:0] curr_ins;
+reg [19:0] cu_PC;
 
 assign regs = ctrl_unit.reg_file.regs;
 assign state_of_cu = ctrl_unit.state;
 assign alu_op1 = ctrl_unit.alu_op1;
 assign alu_op2 = ctrl_unit.alu_op2;
-
+assign curr_ins = ctrl_unit.curr_instruction;
+assign cu_PC = ctrl_unit.PC;
 
 initial begin
 

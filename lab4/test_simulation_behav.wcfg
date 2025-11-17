@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="test_simulation_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="axi_bram_ctrl_funcs" />
+            <top_module name="glbl" />
+            <top_module name="test_simulation" />
+            <top_module name="vcomponents" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="15,104,997 ps"></ZoomStartTime>
+      <ZoomEndTime time="15,105,001 ps"></ZoomEndTime>
+      <Cursor1Time time="15,105,000 ps"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="122"></NameColumnWidth>
+      <ValueColumnWidth column_width="118"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="44" />
+   <wvobject type="logic" fp_name="/test_simulation/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/rst">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/awready">
+      <obj_property name="ElementShortName">awready</obj_property>
+      <obj_property name="ObjectShortName">awready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/awvalid">
+      <obj_property name="ElementShortName">awvalid</obj_property>
+      <obj_property name="ObjectShortName">awvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/awaddr">
+      <obj_property name="ElementShortName">awaddr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">awaddr[19:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/wready">
+      <obj_property name="ElementShortName">wready</obj_property>
+      <obj_property name="ObjectShortName">wready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/wvalid">
+      <obj_property name="ElementShortName">wvalid</obj_property>
+      <obj_property name="ObjectShortName">wvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/wdata">
+      <obj_property name="ElementShortName">wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/bready">
+      <obj_property name="ElementShortName">bready</obj_property>
+      <obj_property name="ObjectShortName">bready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/bvalid">
+      <obj_property name="ElementShortName">bvalid</obj_property>
+      <obj_property name="ObjectShortName">bvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/bresp">
+      <obj_property name="ElementShortName">bresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">bresp[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/arready">
+      <obj_property name="ElementShortName">arready</obj_property>
+      <obj_property name="ObjectShortName">arready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/arvalid">
+      <obj_property name="ElementShortName">arvalid</obj_property>
+      <obj_property name="ObjectShortName">arvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/araddr">
+      <obj_property name="ElementShortName">araddr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">araddr[19:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/rready">
+      <obj_property name="ElementShortName">rready</obj_property>
+      <obj_property name="ObjectShortName">rready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/rvalid">
+      <obj_property name="ElementShortName">rvalid</obj_property>
+      <obj_property name="ObjectShortName">rvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/rdata">
+      <obj_property name="ElementShortName">rdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/rresp">
+      <obj_property name="ElementShortName">rresp[1:0]</obj_property>
+      <obj_property name="ObjectShortName">rresp[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/_rst">
+      <obj_property name="ElementShortName">_rst</obj_property>
+      <obj_property name="ObjectShortName">_rst</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/_awvalid">
+      <obj_property name="ElementShortName">_awvalid</obj_property>
+      <obj_property name="ObjectShortName">_awvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/_awaddr">
+      <obj_property name="ElementShortName">_awaddr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">_awaddr[19:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/_wvalid">
+      <obj_property name="ElementShortName">_wvalid</obj_property>
+      <obj_property name="ObjectShortName">_wvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/_wdata">
+      <obj_property name="ElementShortName">_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/_bready">
+      <obj_property name="ElementShortName">_bready</obj_property>
+      <obj_property name="ObjectShortName">_bready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/_arvalid">
+      <obj_property name="ElementShortName">_arvalid</obj_property>
+      <obj_property name="ObjectShortName">_arvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/_araddr">
+      <obj_property name="ElementShortName">_araddr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">_araddr[19:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/_rready">
+      <obj_property name="ElementShortName">_rready</obj_property>
+      <obj_property name="ObjectShortName">_rready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/error">
+      <obj_property name="ElementShortName">error</obj_property>
+      <obj_property name="ObjectShortName">error</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/valid">
+      <obj_property name="ElementShortName">valid</obj_property>
+      <obj_property name="ObjectShortName">valid</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/cu_awvalid">
+      <obj_property name="ElementShortName">cu_awvalid</obj_property>
+      <obj_property name="ObjectShortName">cu_awvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/cu_awaddr">
+      <obj_property name="ElementShortName">cu_awaddr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">cu_awaddr[19:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/cu_wvalid">
+      <obj_property name="ElementShortName">cu_wvalid</obj_property>
+      <obj_property name="ObjectShortName">cu_wvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/cu_wdata">
+      <obj_property name="ElementShortName">cu_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">cu_wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/cu_bready">
+      <obj_property name="ElementShortName">cu_bready</obj_property>
+      <obj_property name="ObjectShortName">cu_bready</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/cu_arvalid">
+      <obj_property name="ElementShortName">cu_arvalid</obj_property>
+      <obj_property name="ObjectShortName">cu_arvalid</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/cu_araddr">
+      <obj_property name="ElementShortName">cu_araddr[19:0]</obj_property>
+      <obj_property name="ObjectShortName">cu_araddr[19:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/test_simulation/cu_rready">
+      <obj_property name="ElementShortName">cu_rready</obj_property>
+      <obj_property name="ObjectShortName">cu_rready</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/my_memory">
+      <obj_property name="ElementShortName">my_memory[511:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">my_memory[511:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/regs">
+      <obj_property name="ElementShortName">regs[0:31][31:0]</obj_property>
+      <obj_property name="ObjectShortName">regs[0:31][31:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/state_of_cu">
+      <obj_property name="ElementShortName">state_of_cu[3:0]</obj_property>
+      <obj_property name="ObjectShortName">state_of_cu[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/alu_op1">
+      <obj_property name="ElementShortName">alu_op1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_op1[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/alu_op2">
+      <obj_property name="ElementShortName">alu_op2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_op2[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/curr_ins">
+      <obj_property name="ElementShortName">curr_ins[31:0]</obj_property>
+      <obj_property name="ObjectShortName">curr_ins[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/test_simulation/cu_PC">
+      <obj_property name="ElementShortName">cu_PC[19:0]</obj_property>
+      <obj_property name="ObjectShortName">cu_PC[19:0]</obj_property>
+   </wvobject>
+</wave_config>
